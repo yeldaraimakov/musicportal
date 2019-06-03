@@ -56,9 +56,11 @@
                             </div>
                             <div class="item-col item-col-title">
                                 <div>
+                                    {% if music.genre %}
                                     <a class="edit" href="{% url 'genre_update' music.genre.id %}">
                                         {{ music.genre.name }}
                                     </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
