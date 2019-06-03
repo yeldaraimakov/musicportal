@@ -57,7 +57,11 @@
 }
 
 .home-container {
-    margin-top: 70px;
+    margin-top: 50px;
+    background: white;
+    min-height: 550px;
+    padding: 25px;
+    border-radius: 2px;
 }
 
 

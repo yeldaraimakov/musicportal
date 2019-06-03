@@ -39,6 +39,14 @@
             <img src="{% static "/" %}images/logo.jpeg" alt="">
             <span>music portal</span>
         </a>
+        <div class="menu-header">
+            <a {% if request.resolver_match.url_name == "home" %}class="active"{% endif %}
+               href="{% url 'home' %}">Music</a>
+            <a {% if request.resolver_match.url_name == "videos" %}class="active"{% endif %}
+               href="{% url 'videos' %}">Videos</a>
+            <a {% if request.resolver_match.url_name == "contacts" %}class="active"{% endif %}
+               href="{% url 'contacts' %}">Contacts</a>
+        </div>
 
     </div>
 </div>

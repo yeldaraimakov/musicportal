@@ -4,10 +4,12 @@ body{
 	height: 100%;
 	position: relative;
 	min-height: 100vh;
+	background: #423838;
 }
 
 body::after {
   content: "";
+  background: url('../images/dark-bg.jpg');
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -55,11 +57,14 @@ a:hover {
 	text-decoration: none;
 }
 
+.header a {
+	color: white;
+}
+
 .container-header {
 	width: 100%;
 	padding: 0 60px;
 }
-
 
 .order-call {
 	background: linear-gradient(180deg, #02E3A9 100%, rgba(255, 255, 255, 0.11) 182.5%);
@@ -95,7 +100,6 @@ a:hover {
 }
 
 .header {
-	margin-top: 30px;
 	width: 100%;
 	display: flex;
 	-webkit-justify-content: space-between;
@@ -103,6 +107,7 @@ a:hover {
 	-webkit-align-items: center;
 	        align-items: center;
 	border: 0;
+	padding: 30px 0;
 }
 
 .header .menu-header {
@@ -134,7 +139,7 @@ a:hover {
 	font-size: 14px !important;
 }
 .header .menu-header a:hover, .header .menu-header .active {
-	color: #02E3A9;
+	color: #DAA520;
 	-webkit-transition: color .3s ease;
 	   -moz-transition: color .3s ease;
 	    -ms-transition: color .3s ease;
@@ -554,7 +559,7 @@ nav .league-link {
 .dropdown-menu {
 	border: 0;
 	width: 188px;
-	background: #02E3A9;
+	background: #DAA520;
 	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.08);
 	padding-top: 40px;
 	padding-bottom: 0;
@@ -587,7 +592,7 @@ nav .league-link {
 
 .dropdown-menu a:hover {
 	background-color: #fff;
-	color: #02E3A9;
+	color: #DAA520;
 }
 
 @media (max-width: 1025px) {
