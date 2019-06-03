@@ -50,6 +50,12 @@
     font-size: 13px;
 }
 
+.genre-link {
+    display: block;
+    font-size: 13px;
+    text-transform: lowercase;
+}
+
 .home-container {
     margin-top: 70px;
 }
