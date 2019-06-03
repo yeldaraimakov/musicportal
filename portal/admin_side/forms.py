@@ -6,7 +6,7 @@ from portal.music_portal.models import Music, Artist, Genre
 
 
 class MusicForm(forms.ModelForm):
-    initial_fields = ['name', 'artist', 'genre', 'audio', ]
+    initial_fields = ['name', 'artist', 'genre', 'audio', 'word_author', 'music_author', ]
 
     def __init__(self, *args, **kwargs):
         initial = kwargs.get('initial')
@@ -35,7 +35,7 @@ class MusicForm(forms.ModelForm):
 
     class Meta:
         model = Music
-        fields = ['name', 'artist', 'genre', 'audio', ]
+        fields = ['name', 'artist', 'genre', 'audio', 'word_author', 'music_author', ]
 
 
 class ArtistForm(forms.ModelForm):
