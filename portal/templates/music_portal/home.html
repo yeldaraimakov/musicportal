@@ -1,0 +1,77 @@
+{% extends 'music_portal/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% load static %}
+
+{% block resources %}
+    <link rel="stylesheet" href="{% static "/" %}css/home.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container home-container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Musicians</h5>
+
+                <div class="filter-container">
+
+                    {% for musician in musicians %}
+
+                        <div class="one-musician">
+
+                            <a class="musician-link" href="?musician_id={{ musician.id }}">{{ musician.nick_name }}</a>
+
+                            <span class="music-count">{{ musician.music_count }} music</span>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <h5>All music list</h5>
+{#                <span class="filter">Agnesadfadfasfds<span class="close">&times;</span></span>#}
+
+                <hr/>
+
+                {% for music in music_list %}
+
+                    <div class="one-music">
+
+                        <a class="btn-download" href="{% url 'download' music.id %}"><i class="fa fa-download"></i></a>
+
+                        <span class="music-name">{{ music.artist.nick_name }} - {{ music.name }}</span>
+
+                        <span class="audio-length">{{ music.audio_length }}</span>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <div class="col-md-3">
+                <h5>Genres</h5>
+
+                <div class="filter-container">
+
+                    {% for genre in genres %}
+
+                        <div class="one-musician">
+
+                            <a class="musician-link" href="?genre_id={{ genre.id }}">{{ genre.name }}</a>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

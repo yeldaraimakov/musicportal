@@ -1,0 +1,75 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+            MusicPortal
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+    {% load static %}
+
+    <link href="{% static "/" %}css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "/" %}css/base.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=cyrillic"
+          rel="stylesheet">
+
+    {% block resources %}
+
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="navbar hide-desktop">
+    <a class="logo-mobile" href="{% url 'home' %}">
+        <img src="{% static "/" %}/images/logo.jpeg" alt="">
+        <span>music portal</span>
+    </a>
+    <div class="menu icon-menu"></div>
+</div>
+<nav role='navigation'>
+    <img src="{% static "/" %}/images/menu-abs-img.png" alt="" class="menu-abs">
+</nav>
+<div class="container hide-mobile">
+    <div class="header">
+        <a class="logo" href="{% url 'home' %}">
+            <img src="{% static "/" %}images/logo.jpeg" alt="">
+            <span>music portal</span>
+        </a>
+
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<script type="text/javascript" src="{% static "/" %}js/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "/" %}js/popper.min.js"></script>
+<script type="text/javascript" src="{% static "/" %}js/bootstrap.min.js"></script>
+<script>
+    // drop down the menu, and swap the icon to the close icon
+    $('.menu').click(function () {
+        $(this).toggleClass('icon-menu');
+        $(this).toggleClass('icon-cross');
+        $('.navbar').toggleClass('bg-color');
+        $('nav').toggleClass('down');
+        $('nav li a').removeClass('down')
+    });
+
+    //Make sure the menu icon behaves corectly when the menu is open
+    $('nav li a').click(function () {
+        $('.menu').addClass('icon-menu');
+        $('.menu').removeClass('icon-cross');
+        $('nav').toggleClass('down');
+        $('.navbar').toggleClass('bg-color');
+    });
+</script>
+
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>

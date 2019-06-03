@@ -1,0 +1,26 @@
+# Pycharm
+.idea/*
+
+# Basics
+*.py[cod]
+__pycache__
+
+# Logs
+logs
+*.log
+
+# Translations
+*.mo
+
+# User-uploaded media
+media/*
+
+# virtual environments
+.env
+venv/
+
+# generated static files
+staticfiles/
+
+# mp3 files
+audio/

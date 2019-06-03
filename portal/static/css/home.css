@@ -1,0 +1,84 @@
+.btn-download {
+    margin-right: 20px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    background: #ebf7fb;
+}
+
+.btn-download:hover {
+    background: #005396 !important;
+}
+
+.btn-download:hover .fa-download {
+    color: white;
+}
+
+.music-name {
+    font-size: 13px;
+    color: #005fab;
+}
+
+.audio-length {
+    float: right;
+    font-size: 13px;
+    color: #a0a0a0;
+}
+
+.one-music {
+    padding: 5px 10px;
+}
+
+.filter-container {
+    padding: 6px 12px;
+    background: #f1f1f1;
+}
+
+.one-musician {
+    padding: 8px;
+    background: white;
+    margin: 12px 0;
+    line-height: 15px;
+}
+
+.music-count {
+    font-size: 11px;
+    color: #a0a0a0;
+}
+
+.musician-link {
+    display: block;
+    font-size: 13px;
+}
+
+.home-container {
+    margin-top: 70px;
+}
+
+
+
+.filter {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: inline;
+  position: relative;
+}
+
+.filter:hover {
+  background-color: #eee;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+}
+
+.close:hover {background: #bbb;}
