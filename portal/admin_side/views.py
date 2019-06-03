@@ -90,15 +90,15 @@ class ArtistFormView(FormView):
 
     def form_valid(self, form):
         artist = self.get_initial().get('artist')
-        artist.updated_by = self.request.user
 
         if artist:
             # update artist
             form.instance = get_object_or_404(Artist, id=artist.id)
+            artist.updated_by = self.request.user
             artist.update(form.data)
         else:
             # create artist
-            artist = form.save(commit=False)
+            artist = form.save(commit=True, user=self.request.user)
 
         print(artist.nick_name, artist.id)
         return redirect(reverse('artists_list'))

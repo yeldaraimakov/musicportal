@@ -50,6 +50,15 @@ class ArtistForm(forms.ModelForm):
         kwargs['initial'] = initial
         super(ArtistForm, self).__init__(*args, **kwargs)
 
+    def save(self, commit=True, user=None):
+        artist = super(ArtistForm, self).save(commit=False)
+
+        if commit:
+            artist.updated_by = user
+            artist.save()
+
+        return artist
+
     class Meta:
         model = Artist
         fields = ['first_name', 'last_name', 'nick_name', ]
