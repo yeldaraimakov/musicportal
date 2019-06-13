@@ -75,3 +75,31 @@ class Music(models.Model):
     def __str__(self):
         return self.name
 
+
+class Video(models.Model):
+    YOUTUBE_URL = 'https://www.youtube.com/embed/'
+
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=1024, blank=True)
+    url = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def update(self, data):
+        instance = Video.objects.get(id=self.id)
+        instance.title = data.get('title')
+        instance.description = data.get('description')
+        instance.url = data.get('url')
+        instance.save()
+
+    def __str__(self):
+        return self.title + ' ' + self.url
+
+    @property
+    def get_url(self):
+        splitted_url = self.url.split('=')
+        if len(splitted_url) < 2:
+            return ''
+        return Video.YOUTUBE_URL + splitted_url[1]

@@ -5,8 +5,8 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, FormView
 from mutagen.mp3 import MP3
 
-from portal.music_portal.models import Music, Artist, Genre
-from .forms import GenreForm, ArtistForm, MusicForm
+from portal.music_portal.models import Music, Artist, Genre, Video
+from .forms import GenreForm, ArtistForm, MusicForm, VideoForm
 
 
 @method_decorator([login_required(login_url='/django-admin/login')], name='dispatch')
@@ -141,11 +141,11 @@ class GenreFormView(FormView):
     def form_valid(self, form):
         genre = self.get_initial().get('genre')
         if genre:
-            # update word
+            # update genre
             form.instance = get_object_or_404(Genre, id=genre.id)
             genre.update(form.data)
         else:
-            # create word
+            # create genre
             form.save(commit=True)
         return redirect(reverse('genres_list'))
 
@@ -160,4 +160,58 @@ def delete_genre(request, id):
     genre = get_object_or_404(Genre, id=id)
     genre.delete()
     return redirect(reverse('genres_list'))
+
+
+@method_decorator([login_required(login_url='/django-admin/login')], name='dispatch')
+class VideoListView(ListView):
+    template_name = 'admin_side/video_list.html'
+    model = Video
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['videos'] = Video.objects.all()
+        return context
+
+
+@method_decorator([login_required(login_url='/django-admin/login')], name='dispatch')
+class VideoFormView(FormView):
+    form_class = VideoForm
+    template_name = 'admin_side/video_form.html'
+
+    def get_initial(self):
+        initial = super(VideoFormView, self).get_initial()
+        if self.kwargs.get('id'):
+            initial['video'] = get_object_or_404(Video, id=self.kwargs['id'])
+        return initial
+
+    def form_valid(self, form):
+        video = self.get_initial().get('video')
+        if video:
+            # update video
+            form.instance = get_object_or_404(Video, id=video.id)
+            video.update(form.data)
+        else:
+            # create video
+            form.save(commit=True)
+        return redirect(reverse('videos_list'))
+
+    def get_context_data(self, **kwargs):
+        if self.kwargs.get('id'):
+            kwargs['video'] = get_object_or_404(Video, id=self.kwargs['id'])
+        return super().get_context_data(**kwargs)
+
+
+@login_required(login_url='/django-admin/login')
+def delete_video(request, id):
+    video = get_object_or_404(Video, id=id)
+    video.delete()
+    return redirect(reverse('videos_list'))
+
+
+@login_required(login_url='/django-admin/login')
+def change_status_video(request, id):
+    video = get_object_or_404(Video, id=id)
+    video.is_active = not video.is_active
+    video.save()
+    return redirect(reverse('videos_list'))
 

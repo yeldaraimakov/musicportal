@@ -12,7 +12,25 @@
 
     <div class="container videos-container">
 
-        Videos
+        {% for video in videos %}
+
+            <div class="video-container">
+
+                <h5>{{ video.title }}</h5>
+
+                <div class="video">
+                    <iframe width="620" height="515" src="{{ video.get_url }}">
+                    </iframe>
+                </div>
+
+                <div class="video-description">
+                    {{ video.description }}
+                </div>
+
+            </div>
+
+            <hr>
+        {% endfor %}
 
     </div>
 

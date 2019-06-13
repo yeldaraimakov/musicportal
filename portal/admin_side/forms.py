@@ -2,7 +2,7 @@ from django import forms
 
 from mutagen.mp3 import MP3
 
-from portal.music_portal.models import Music, Artist, Genre
+from portal.music_portal.models import Music, Artist, Genre, Video
 
 
 class MusicForm(forms.ModelForm):
@@ -79,3 +79,21 @@ class GenreForm(forms.ModelForm):
     class Meta:
         model = Genre
         fields = ['name', ]
+
+
+class VideoForm(forms.ModelForm):
+    initial_fields = ['title', 'description', 'url']
+    description = forms.CharField(widget=forms.Textarea)
+
+    def __init__(self, *args, **kwargs):
+        initial = kwargs.get('initial')
+        self.video = kwargs.get('initial').get('video')
+        for key in self.initial_fields:
+            if hasattr(self.video, key):
+                initial[key] = initial.get(key) or getattr(self.video, key)
+        kwargs['initial'] = initial
+        super(VideoForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = Video
+        fields = ['title', 'description', 'url']

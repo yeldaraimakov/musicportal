@@ -1,10 +1,10 @@
 import os
 
 from django.http import HttpResponse, Http404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import get_object_or_404
 
-from portal.music_portal.models import Artist, Music, Genre
+from portal.music_portal.models import Artist, Music, Genre, Video
 
 
 class HomePage(TemplateView):
@@ -25,6 +25,16 @@ class HomePage(TemplateView):
         context['genres'] = Genre.objects.all()
         context['musicians'] = Artist.objects.all()
 
+        return context
+
+
+class VideosList(ListView):
+    template_name = 'music_portal/videos.html'
+    model = Video
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['videos'] = Video.objects.filter(is_active=True)
         return context
 
 
