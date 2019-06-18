@@ -69,6 +69,8 @@ class Music(models.Model):
         instance.artist = Artist.objects.get(id=int(data.get('artist')))
         if data.get('genre') != '':
             instance.genre = Genre.objects.get(id=int(data.get('genre')))
+        else:
+            instance.genre = None
         instance.word_author = data.get('word_author')
         instance.music_author = data.get('music_author')
         instance.save()
