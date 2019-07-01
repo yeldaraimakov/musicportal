@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -138,3 +139,7 @@ STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATICFILES_DIRS = [
     str(APPS_DIR.path('static')),
 ]
+
+# Uploaded audio files
+MEDIA_URL='/audio/'
+MEDIA_ROOT=os.path.join(BASE_DIR, "audio")
