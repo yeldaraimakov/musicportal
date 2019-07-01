@@ -13,17 +13,21 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         genre_id = self.request.GET.get('genre_id')
         musician_id = self.request.GET.get('musician_id')
+        filter = None
 
         music_list = Music.objects.all()
         if genre_id:
             music_list = music_list.filter(genre_id=genre_id)
+            filter = Genre.objects.get(id=genre_id).name
         if musician_id:
             music_list = music_list.filter(artist_id=musician_id)
+            filter = Artist.objects.get(id=musician_id).nick_name
 
         context = super().get_context_data(**kwargs)
         context['music_list'] = music_list
         context['genres'] = Genre.objects.all()
-        context['musicians'] = Artist.objects.all()
+        context['musicians'] = Artist.objects.filter(music_count__gt=0)
+        context['filter'] = filter
 
         return context
 

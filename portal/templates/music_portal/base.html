@@ -25,27 +25,33 @@
 
 <div class="navbar hide-desktop">
     <a class="logo-mobile" href="{% url 'home' %}">
-        <img src="{% static "/" %}/images/logo.jpeg" alt="">
-        <span>music portal</span>
+        <img src="{% static "/" %}/images/logo_blc.png" alt="">
+        <span>ән порталы</span>
     </a>
     <div class="menu icon-menu"></div>
 </div>
 <nav role='navigation'>
     <img src="{% static "/" %}/images/menu-abs-img.png" alt="" class="menu-abs">
+
+    <ul>
+        <li><a {% if request.resolver_match.url_name == "home" %} class="active" {% endif %} href="{% url 'home' %}">Әндер</a></li>
+        <li><a {% if request.resolver_match.url_name == "videos" %} class="active" {% endif %} href="{% url 'videos' %}">Бейнелер</a></li>
+    </ul>
+    <ul>
 </nav>
 <div class="container hide-mobile">
     <div class="header">
         <a class="logo" href="{% url 'home' %}">
             <img src="{% static "/" %}images/logo.jpeg" alt="">
-            <span>music portal</span>
+            <span>ән порталы</span>
         </a>
         <div class="menu-header">
             <a {% if request.resolver_match.url_name == "home" %}class="active"{% endif %}
-               href="{% url 'home' %}">Music</a>
+               href="{% url 'home' %}">Әндер</a>
             <a {% if request.resolver_match.url_name == "videos" %}class="active"{% endif %}
-               href="{% url 'videos' %}">Videos</a>
-            <a {% if request.resolver_match.url_name == "contacts" %}class="active"{% endif %}
-               href="{% url 'contacts' %}">Contacts</a>
+               href="{% url 'videos' %}">Бейнелер</a>
+{#            <a {% if request.resolver_match.url_name == "contacts" %}class="active"{% endif %}#}
+{#               href="{% url 'contacts' %}">Contacts</a>#}
         </div>
 
     </div>

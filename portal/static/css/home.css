@@ -92,3 +92,15 @@
 }
 
 .close:hover {background: #bbb;}
+
+.all-music-link {
+    font-size: 11px;
+    color: #007bff;
+    float: right;
+    text-decoration: underline;
+    text-transform: unset;
+}
+
+.all-music-link:hover {
+    text-decoration: underline;
+}

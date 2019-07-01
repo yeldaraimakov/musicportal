@@ -17,7 +17,7 @@
     <div class="container home-container">
         <div class="row">
             <div class="col-md-3">
-                <h5>Musicians</h5>
+                <h5>Әншілер</h5>
 
                 <div class="filter-container">
 
@@ -27,7 +27,7 @@
 
                             <a class="musician-link" href="?musician_id={{ musician.id }}">{{ musician.nick_name }}</a>
 
-                            <span class="music-count">{{ musician.music_count }} music</span>
+                            <span class="music-count">{{ musician.music_count }} ән</span>
                         </div>
 
                     {% endfor %}
@@ -36,8 +36,9 @@
 
             </div>
             <div class="col-md-6">
-                <h5>All music list</h5>
-{#                <span class="filter">Agnesadfadfasfds<span class="close">&times;</span></span>#}
+                <h5 style="display: inline">Әндер{% if filter %}: {{ filter }} {% endif %}</h5>
+
+                {% if filter %} <a class="all-music-link" href="{% url 'home' %}">Барлық әндер</a> {% endif %}
 
                 <hr/>
 
@@ -55,7 +56,7 @@
                 {% endfor %}
             </div>
             <div class="col-md-3">
-                <h5>Genres</h5>
+                <h5>Жанрлар</h5>
 
                 <div class="filter-container">
 
