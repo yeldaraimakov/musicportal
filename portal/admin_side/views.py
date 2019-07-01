@@ -36,14 +36,6 @@ class MusicFormView(FormView):
         if music:
             # update music
             form.instance = get_object_or_404(Music, id=music.id)
-            new_artist = Artist.objects.get(id=form.data.get('artist'))
-
-            if new_artist != music.artist:
-                music.artist.music_count -= 1
-                music.artist.save()
-                new_artist.music_count += 1
-                new_artist.save()
-
             music.update(form.data)
         else:
             # create music
@@ -59,8 +51,6 @@ class MusicFormView(FormView):
 @login_required(login_url='/django-admin/login')
 def delete_music(request, id):
     music = get_object_or_404(Music, id=id)
-    music.artist.music_count -= 1
-    music.artist.save()
     music.delete()
     return redirect(reverse('music_list'))
 

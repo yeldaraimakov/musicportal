@@ -24,12 +24,8 @@ class MusicForm(forms.ModelForm):
 
         if commit:
             music.save()
-            print(music.audio.url)
             music.audio_len = MP3(music.audio.url).info.length
             music.save()
-
-            music.artist.music_count += 1
-            music.artist.save()
 
         return music
 

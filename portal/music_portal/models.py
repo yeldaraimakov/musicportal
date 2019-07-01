@@ -1,13 +1,11 @@
-from django.db import models
 from django.conf import settings
-from mutagen.mp3 import MP3
+from django.db import models
 
 
 class Artist(models.Model):
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     nick_name = models.CharField(max_length=255)
-    music_count = models.IntegerField(default=0)
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

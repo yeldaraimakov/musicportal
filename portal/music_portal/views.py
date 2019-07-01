@@ -26,8 +26,16 @@ class HomePage(TemplateView):
         context = super().get_context_data(**kwargs)
         context['music_list'] = music_list
         context['genres'] = Genre.objects.all()
-        context['musicians'] = Artist.objects.filter(music_count__gt=0)
         context['filter'] = filter
+
+        artists = set()
+        for music in Music.objects.all():
+            artists.add(music.artist)
+
+        context['musicians'] = artists
+
+        for artist in artists:
+            artist.music_count = Music.objects.filter(artist=artist).count()
 
         return context
 
