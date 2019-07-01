@@ -3,9 +3,9 @@ from django.db import models
 
 
 class Artist(models.Model):
-    first_name = models.CharField(max_length=255, blank=True)
-    last_name = models.CharField(max_length=255, blank=True)
-    nick_name = models.CharField(max_length=255)
+    first_name = models.CharField('Аты', max_length=255, blank=True)
+    last_name = models.CharField('Жөні', max_length=255, blank=True)
+    nick_name = models.CharField('Лақап аты', max_length=255)
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -23,7 +23,7 @@ class Artist(models.Model):
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField('Атауы', max_length=255)
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -38,13 +38,13 @@ class Genre(models.Model):
 
 
 class Music(models.Model):
-    name = models.CharField(max_length=255)
-    artist = models.ForeignKey(Artist, on_delete=models.PROTECT)
-    genre = models.ForeignKey(Genre, on_delete=models.PROTECT, null=True, blank=True)
+    name = models.CharField('Атауы', max_length=255)
+    artist = models.ForeignKey(Artist, verbose_name='Әнші', on_delete=models.PROTECT)
+    genre = models.ForeignKey(Genre, verbose_name='Жанр', on_delete=models.PROTECT, null=True, blank=True)
     audio = models.FileField()
     audio_len = models.FloatField(default=0)
-    word_author = models.CharField(max_length=255, blank=True)
-    music_author = models.CharField(max_length=255, blank=True)
+    word_author = models.CharField('Cөзін жазған', max_length=255, blank=True)
+    music_author = models.CharField('Әнін жазған', max_length=255, blank=True)
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -80,9 +80,9 @@ class Music(models.Model):
 class Video(models.Model):
     YOUTUBE_URL = 'https://www.youtube.com/embed/'
 
-    title = models.CharField(max_length=255)
-    description = models.CharField(max_length=1024, blank=True)
-    url = models.CharField(max_length=255)
+    title = models.CharField('Атауы', max_length=255)
+    description = models.CharField('Түсіндірме', max_length=1024, blank=True)
+    url = models.CharField('Сілтеме', max_length=255)
     is_active = models.BooleanField(default=True)
 
     created_date = models.DateTimeField(auto_now_add=True)

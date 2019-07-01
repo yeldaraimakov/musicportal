@@ -79,7 +79,7 @@ class GenreForm(forms.ModelForm):
 
 class VideoForm(forms.ModelForm):
     initial_fields = ['title', 'description', 'url']
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(label='Түсіндерме', widget=forms.Textarea)
 
     def __init__(self, *args, **kwargs):
         initial = kwargs.get('initial')

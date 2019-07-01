@@ -8,9 +8,9 @@
     <article class="content item-editor-page">
         <div class="title-block">
             <h3 class="title"> {% if video %}
-                Обновить
+                Өзгерту
                 {% else %}
-                Создать
+                Жаңа
                 {% endif %}
                 <span class="sparkline bar" data-type="bar"></span>
             </h3>
@@ -22,10 +22,10 @@
                 {{ form.media }}
                 {{ form|crispy }}
             </div>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Сохранить</button>
-            <a href="{% url 'videos_list' %}" class="btn btn-secondary"><i class="fa fa-minus-circle"></i> Отмена</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Сақтау</button>
+            <a href="{% url 'videos_list' %}" class="btn btn-secondary"><i class="fa fa-minus-circle"></i> Болдырмау</a>
             {% if video %}
-                <a href="{% url 'video_delete' video.id %}" class="btn btn-danger"><i class="fa fa-remove"></i> Удалить</a>
+                <a href="{% url 'video_delete' video.id %}" class="btn btn-danger"><i class="fa fa-remove"></i> Жою</a>
                 {% if video.is_active %}
                     <a href="{% url 'video_change_status' video.id %}" class="btn btn-danger">Деактивировать </a>
                 {% else %}

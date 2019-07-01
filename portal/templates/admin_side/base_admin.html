@@ -5,7 +5,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>
             {% block title %}
-                MusicPortal Admin
+                Mynyrgaq ән порталы
             {% endblock%}
         </title>
         <meta name="description" content="">
@@ -41,7 +41,7 @@
                                 </a>
                                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <a class="dropdown-item" href="{% url 'admin:logout' %}">
-                                        <i class="fa fa-power-off icon"></i> Выйти </a>
+                                        <i class="fa fa-power-off icon"></i> Шығу </a>
                                 </div>
                             </li>
                         </ul>
@@ -50,25 +50,25 @@
                 <aside class="sidebar">
                     <div class="sidebar-container">
                         <div class="sidebar-header">
-                            <div class="brand">MusicPortal</div>
+                            <div class="brand">Mynyrgaq</div>
                         </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li>
                                     <a href="{% url 'music_list' %}">
-                                        <i class="fa fa-th-large"></i> Music List </a>
+                                        <i class="fa fa-th-large"></i> Әндер </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'artists_list' %}">
-                                        <i class="fa fa-th-large"></i> Musicians </a>
+                                        <i class="fa fa-th-large"></i> Әншілер </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'genres_list' %}">
-                                        <i class="fa fa-th-large"></i> Genres </a>
+                                        <i class="fa fa-th-large"></i> Жанрлар </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'videos_list' %}">
-                                        <i class="fa fa-th-large"></i> Videos </a>
+                                        <i class="fa fa-th-large"></i> Бейнелер </a>
                                 </li>
                             </ul>
                         </nav>
