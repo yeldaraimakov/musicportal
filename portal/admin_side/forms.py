@@ -22,9 +22,9 @@ class MusicForm(forms.ModelForm):
     def save(self, commit=True):
         music = super(MusicForm, self).save(commit=False)
 
+        music.audio_len = MP3(music.audio).info.length
+
         if commit:
-            music.save()
-            music.audio_len = MP3(music.audio.url).info.length
             music.save()
 
         return music
