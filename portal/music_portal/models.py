@@ -43,7 +43,7 @@ class Music(models.Model):
     name = models.CharField(max_length=255)
     artist = models.ForeignKey(Artist, on_delete=models.PROTECT)
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, null=True, blank=True)
-    audio = models.FileField(upload_to='audio/')
+    audio = models.FileField()
     audio_len = models.FloatField(default=0)
     word_author = models.CharField(max_length=255, blank=True)
     music_author = models.CharField(max_length=255, blank=True)

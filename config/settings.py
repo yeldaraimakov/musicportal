@@ -142,4 +142,4 @@ STATICFILES_DIRS = [
 
 # Uploaded audio files
 MEDIA_URL='/audio/'
-MEDIA_ROOT=os.path.join(BASE_DIR, "audio")
+MEDIA_ROOT=os.path.join(BASE_DIR, "media")
