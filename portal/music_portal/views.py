@@ -1,5 +1,6 @@
 import os
 
+from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.views.generic import TemplateView, ListView
 from django.shortcuts import get_object_or_404
@@ -51,10 +52,16 @@ class VideosList(ListView):
 
 
 def download(request, music_id):
-    file_path = get_object_or_404(Music, id=music_id).audio.url
+    music = get_object_or_404(Music, id=music_id)
+    file_path = os.path.join(settings.MEDIA_ROOT, music.audio.url)[1:]
+    print(file_path)
+    print(os.path.exists('media/audio/Akku_arman.mp3'))
+
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
+    else:
+        print('not exist')
     raise Http404
