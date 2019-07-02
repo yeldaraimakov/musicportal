@@ -56,15 +56,11 @@ class VideosList(ListView):
 
 def download(request, music_id):
     music = get_object_or_404(Music, id=music_id)
-    file_path = os.path.join(settings.MEDIA_ROOT, music.audio.url)[1:]
-
-    logger.info('download file = ' + file_path)
+    file_path = music.audio.path
 
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
-    else:
-        print('not exist')
     raise Http404
